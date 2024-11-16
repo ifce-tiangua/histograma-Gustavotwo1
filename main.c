@@ -1,46 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void preencherHistograma(char* histo[], int valor, int categoria );
+void exibirHistograma(char* histo[], int valor[], int categoria);
+
 int main(){
 
-    int *vet;
-    int n, i;
+    
+    int Categorias, i;
+    scanf("%d", &Categorias);
 
-    scanf("%d", &n);
+    char *histograma[Categorias];
+    int Quantidade[Categorias];
 
-    vet = (int)malloc(n*sizeof(int));
+    for(i=0; i<Categorias; i++){
 
-    for(i=0; i<n; i++){
+        scanf("%d", &Quantidade[i]);
 
-        scanf("%d", &*(vet+i));
+        if(Quantidade[i] == 0){
 
-    }
-    if(n==0){
+            histograma[i] = NULL;
 
-        printf("[vazio]");
-    }else{
+        }else{
 
-        printf("[");
-
-        for(i=0; i<n; i++){
-
-            if(i==n-1){
-
-                printf("%d", *(vet+i));
-
-            }else{
-
-                printf("%d, ", *(vet+i));
-
-            }
+            histograma[i] = (char *) malloc(Quantidade[i]* sizeof(char));
+            preencherHistograma(histograma, Quantidade[i], i);
 
         }
 
-        printf("]");
+    }
+
+    exibirHistograma(histograma, Quantidade, Categorias);
+
+    for(i=0; i<Categorias; i++){
+
+        free(histograma[i]);
 
     }
 
-    free(vet);
-    
     return 0;
+
+}
+
+void preencherHistograma(char* histo[], int valor, int categoria){
+
+    int i;
+
+    for(i=0; i<valor; i++){
+
+        histo[categoria][i] = '*';
+
+    }
+
+}
+
+void exibirHistograma(char* histo[], int valor[], int categoria){
+
+    int i, j;
+    
+    for(i=0; i<categoria; i++){
+
+        printf("%d ", valor[i]);
+        for(j=0; j<valor[i]; j++){
+
+            printf("%c", histo[i][j]);
+            
+
+        }
+
+        printf("\n");
+
+    }
+
 }
