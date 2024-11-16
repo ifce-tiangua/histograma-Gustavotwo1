@@ -10,6 +10,10 @@ int main(){
     int Categorias, i;
     scanf("%d", &Categorias);
 
+     if (categorias <= 0) {
+        return 1; 
+    }
+
     char *histograma[Categorias];
     int Quantidade[Categorias];
 
