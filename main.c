@@ -61,13 +61,14 @@ void exibirHistograma(char* histo[], int valor[], int categoria){
     for(i=0; i<categoria; i++){
 
         printf("%d ", valor[i]);
-        for(j=0; j<valor[i]; j++){
 
-            printf("%c", histo[i][j]);
-            
+        if(valor[i] != 0){
+            for(j=0; j<valor[i]; j++){
 
+                printf("%c", histo[i][j]);
+                
+            }
         }
-
         printf("\n");
 
     }
