@@ -10,10 +10,6 @@ int main(){
     int Categorias, i;
     scanf("%d", &Categorias);
 
-     if (categorias <= 0) {
-        return 1; 
-    }
-
     char *histograma[Categorias];
     int Quantidade[Categorias];
 
@@ -61,12 +57,19 @@ void preencherHistograma(char* histo[], int valor, int categoria){
 void exibirHistograma(char* histo[], int valor[], int categoria){
 
     int i, j;
+
+    if(categoria==0){
+
+        printf("vazio\n");
+
+    }
     
     for(i=0; i<categoria; i++){
 
         printf("%d ", valor[i]);
 
         if(valor[i] != 0){
+
             for(j=0; j<valor[i]; j++){
 
                 printf("%c", histo[i][j]);
